@@ -4,34 +4,48 @@ from typing import List, Optional
 
 app = FastAPI()
 
-# THIS IS THE SHL CATALOG - ADD REAL TESTS HERE!
 CATALOG = [
     {
-        "name": "Java 8 Programming Test",
-        "url": "https://www.shl.com/java8",
-        "test_type": "K",
-        "skills": ["java", "programming", "developer"]
-    },
-    {
-        "name": "Python Programming Test", 
-        "url": "https://www.shl.com/python",
-        "test_type": "K",
-        "skills": ["python", "programming", "developer"]
-    },
-    {
-        "name": "Leadership Assessment",
-        "url": "https://www.shl.com/leadership",
+        "name": "Server - One Sitting",
+        "url": "https://www.shl.com/en/assessments/server-one-sitting/",
         "test_type": "P",
-        "skills": ["leader", "manager", "team lead"]
+        "skills": ["server", "waiter", "waitress", "hospitality", "customer service", "food", "restaurant"],
+        "duration_minutes": 40,
+        "remote_testing": True
     },
     {
-        "name": "Communication Skills Test",
-        "url": "https://www.shl.com/communication",
+        "name": "Java 8 Programming",
+        "url": "https://www.shl.com/en/assessments/java-8/",
+        "test_type": "K",
+        "skills": ["java", "programming", "developer", "coding", "spring"],
+        "duration_minutes": 60,
+        "remote_testing": True
+    },
+    {
+        "name": "OPQ32r - Personality Assessment",
+        "url": "https://www.shl.com/en/assessments/opq32r/",
         "test_type": "P",
-        "skills": ["communication", "english", "writing"]
+        "skills": ["personality", "leadership", "teamwork", "communication", "management"],
+        "duration_minutes": 25,
+        "remote_testing": True
+    },
+    {
+        "name": "Verify G+ - Cognitive Ability",
+        "url": "https://www.shl.com/en/assessments/verify-g-plus/",
+        "test_type": "K",
+        "skills": ["cognitive", "aptitude", "problem solving", "reasoning"],
+        "duration_minutes": 36,
+        "remote_testing": True
+    },
+    {
+        "name": "Python Programming",
+        "url": "https://www.shl.com/en/assessments/python/",
+        "test_type": "K",
+        "skills": ["python", "programming", "coding", "developer", "data science"],
+        "duration_minutes": 60,
+        "remote_testing": True
     }
 ]
-
 class ChatRequest(BaseModel):
     message: str
     conversation_history: Optional[List[dict]] = []
