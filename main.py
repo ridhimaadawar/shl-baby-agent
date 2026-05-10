@@ -4,7 +4,7 @@ from typing import List, Optional
 
 app = FastAPI()
 
-# Simple catalog
+# SIMPLE CATALOG - all keys match!
 CATALOG = [
     {"name": "Java Test", "url": "https://shl.com/java", "test_type": "K"},
     {"name": "Python Test", "url": "https://shl.com/python", "test_type": "K"},
@@ -23,7 +23,6 @@ def health():
 def chat(req: ChatRequest):
     msg = req.message.lower()
     
-    # Simple matching
     matches = []
     if "java" in msg:
         matches.append(CATALOG[0])
@@ -33,9 +32,18 @@ def chat(req: ChatRequest):
         matches.append(CATALOG[2])
     
     if matches:
+        # Convert to proper format
+        recommendations = []
+        for test in matches:
+            recommendations.append({
+                "name": test["name"],
+                "url": test["url"],
+                "test_type": test["test_type"]  # ← FIXED!
+            })
+        
         return {
-            "reply": f"Found {len(matches)} tests",
-            "recommendations": matches,
+            "reply": f"Found {len(matches)} tests for you!",
+            "recommendations": recommendations,
             "end_of_conversation": True
         }
     
